@@ -1,0 +1,15 @@
+.tong-register {
+    border-bottom: lightgray solid 1px;
+}
+
+.tong-table {
+    margin: 10px 100px;
+    padding: 10px;
+}
+
+.tong-table-title {
+}
+
+.tong-table-password {
+    margin: 0 50px;
+}

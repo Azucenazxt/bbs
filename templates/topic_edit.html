@@ -1,0 +1,18 @@
+{% extends "basebbs.html" %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/bbs_index.css">
+{% endblock %}
+{% block content %}
+    <div>
+        <form action="{{ url_for('.update', id=topic.id) }}" method="post">
+            <div>
+                <input type="text" name="title" value="{{ topic.title }}">
+            </div>
+            <div>
+                <textarea name="content"></textarea>
+            </div>
+            <div><button>更新</button></div>
+        </form>
+    </div>
+{% endblock %}
+

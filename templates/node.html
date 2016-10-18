@@ -1,0 +1,41 @@
+{% extends "basebbs.html" %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/bbs_index.css">
+<link rel="stylesheet" href="/static/css/bbs_node.css">
+
+{% endblock %}
+{% block content %}
+    <div class="tong-inner-content tong-box">
+        <div class="tong-node-top">
+            <img class="tong-node-avatar tong-left" src="{{ node.avatar }}">
+            <div>
+                <a class="tong-href-v2ex" href="/topic">V2EX</a>
+                <span class="tong-v2ex-name"> > {{ node.name }}</span>
+            </div>
+            <div>{{ node.title }}</div>
+            <div>
+                <a href="{{ url_for('node.new', id=node.id) }}"><button>创建新主题</button></a>
+            </div>
+        </div>
+
+    {% for t in node.topics %}
+        <div class="tong-topic-title">
+            <img class="tong-avatar tong-left tong-box" src="{{t.user_t.avatar}}">
+            <div class="tong-block-content">
+                <a class="tong-title" href="{{ url_for('topic.show', id=t.id) }}">{{ t.title }}</a>
+                <div>{{ 评论数 }}</div>
+                <div>
+                    <a class="tong-content-node tong-box" href="{{url_for('node.show', id=t.node.id)}}">{{ t.node.name }}</a>
+                    <span>  •  </span>
+                    <span>{{ t.user_t.username }}</span>
+                    <span>  • {{ t.created_time }}</span>
+                    <a href="{{ url_for('topic.edit', id=t.id)}}">修改</a>
+                    <a href="{{ url_for('topic.delete', id=t.id)}}">删除</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+

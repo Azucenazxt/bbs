@@ -1,0 +1,16 @@
+
+
+.tong-topic {
+    height: 74px;
+    border-bottom: lightgray solid 1px;
+}
+
+.tong-topic-title {
+    font-size: 25px;
+}
+
+
+.tong-comment {
+    height: 74px;
+    border-bottom: lightgray solid 1px;
+}

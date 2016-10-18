@@ -1,0 +1,69 @@
+{% extends "basebbs_logined.html" %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/bbs_logined_index.css">
+    <link rel="stylesheet" href="/static/css/bbs_user_setting.css">
+{% endblock %}
+{% block content %}
+    <div class="tong-inner-content tong-box tong-margin-0">
+        <div class="tong-padding-10 tong-register">
+            <a class="tong-href-v2ex" href="/topic">V2EX</a>
+            <span class="tong-v2ex-name"> > 设置</span>
+        </div>
+        <div class="tong-table tong-table-title">
+            <form action="{{ url_for('.update') }}" method="post">
+                <table>
+                    <tr>
+                        <td align="right">用户名</td>
+                        <td>
+                            <span class="tong-input">{{user.username}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">个人简介</td>
+                        <td>
+                            <textarea class="tong-input" name="title"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button class="tong-button-first">保存设置</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="tong-inner-content tong-box">
+        <div class="tong-sidebar-top tong-padding-10">更改密码</div>
+        <div class="tong-table tong-table-password">
+            <form action="{{ url_for('.change_password') }}" method="post">
+                <table>
+                    <tr>
+                        <td align="right">当前密码</td>
+                        <td>
+                            <input class="tong-input" type="text" name="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">新密码</td>
+                        <td>
+                            <input class="tong-input" type="text" name="new_password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">再次输入新密码</td>
+                        <td>
+                            <input class="tong-input" type="text" name="renew_password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button class="tong-button-first">更改密码</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block sidebar %}
+    {{ super() }}
+{% endblock %}

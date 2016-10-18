@@ -1,0 +1,27 @@
+{% extends "basebbs.html" %}
+{% block css %}
+<!-- super 就是说继承的模板的内容不变, 然后再添加上新的东西 -->
+    {{ super() }}
+    <link rel="stylesheet" href="/static/css/bbs_index.css">
+{% endblock %}
+{% block content %}
+    <div>
+        <form action="{{ url_for('.add') }}" method="post">
+            <input type="text" name="name" placeholder="输入 node">
+            <input type="text" name="avatar" placeholder="输入 avatar 地址">
+            <input type="text" name="title" placeholder="输入 node 标题">
+            <button>Add</button>
+        </form>
+    </div>
+    {% for n in node_list %}
+        <div>
+            <img class="tong-node-avatar" src="{{ n.avatar }}">
+            <a href="{{ url_for('.show', id=n.id)}}">{{ n.name }}</a>
+            <span>{{ n.title }}</span>
+            <a href="{{ url_for('.edit', id=n.id) }}">修改</a>
+            <a href="{{ url_for('.delete', id=n.id) }}">删除</a>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+

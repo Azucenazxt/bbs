@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/basebbs_logined.css">
+    {% block css %}{% endblock %}
+	<title>V2EX</title>
+</head>
+<body>
+    {% block top %}
+    <div class="tong-top">
+        <a href="/topic"><img class="tong-v2ex tong-left" src="https://cdn.v2ex.co/site/logo@2x.png?m=1346064962"></a>
+        <img class="tong-left tong-search" src="https://www.v2ex.com/static/img/qbar_light@2x.png">
+        <a class="tong-right tong-href" href="{{url_for('user.login_out')}}">登出</a>
+        <a class="tong-right tong-href" href="{{url_for('user.set')}}">设置</a>
+        <a class="tong-right tong-href" href="/topic">首页</a>
+    </div>
+{% endblock %}
+    <div class="tong-main">
+        <div class="tong-sidebar tong-box tong-right">
+        {% block sidebar %}
+            <div class="tong-sidebar-top">
+                <div class="tong-user">
+                    <img class="tong-user-avatar tong-left" src="{{user.avatar}}">
+                    <div>
+                        <a class="tong-user-name tong-left" href="{{url_for('user.set')}}">{{user.username}}</a>
+                    </div>
+                </div>
+                <div class="tong-user-topic">
+                    <div class="tong-topic-message">
+                        <div>0</div>
+                        <div>节点收藏</div>
+                    </div>
+                    <div class="tong-topic-message">
+                        <div>0</div>
+                        <div>主题收藏</div>
+                    </div>
+                    <div class="tong-topic-message">
+                        <div>0</div>
+                        <div>特别关注</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tong-sidebar-top tong-user-title">{{user.title}}</div>
+            <div class="tong-new-topic">
+                <img class="tong-user-avatar tong-left" src="https://www.v2ex.com/static/img/flat_compose.png?v=7d21f0767aeba06f1dec21485cf5d2f1">
+                <div><a class="tong-user-name tong-left" href="{{url_for('node.new_topic')}}">创作新主题</a></div>
+            </div>
+        {% endblock %}
+        </div>
+        <div class="tong-content">
+        {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div class="tong-bottom">
+        底栏
+    </div>
+</body>
+</html>

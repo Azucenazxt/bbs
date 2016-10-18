@@ -1,0 +1,24 @@
+{% extends "basebbs_logined.html" %}
+{% block css %}
+<!-- super 就是说继承的模板的内容不变, 然后再添加上新的东西 -->
+    {{ super() }}
+    <link rel="stylesheet" href="/static/css/bbs_logined_index.css">
+    <link rel="stylesheet" href="/static/css/bbs_index.css">
+{% endblock %}
+{% block content %}
+        <form class="tong-box tong-padding-10" action="{{ url_for('topic.add') }}" method="post">
+            <input type="hidden" name="node_id" value="{{node.id}}">
+            <input type="hidden" name="user_id" value="{{user.id}}">
+            <div>
+                <input type="text" name="title" placeholder="输入 topic">
+            </div>
+            <div>
+                <textarea name="content" placeholder="输入 content"></textarea>
+            </div>
+            <div>
+                <button>Post Topic</button>
+            </div>
+        </form>
+{% endblock %}
+
+

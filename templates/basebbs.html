@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/basebbs.css">
+    {% block css %}{% endblock %}
+	<title>V2EX</title>
+</head>
+<body>
+    {% block top %}
+    <div class="tong-top">
+        <a href="/topic"><img class="tong-v2ex tong-left" src="https://cdn.v2ex.co/site/logo@2x.png?m=1346064962"></a>
+        <img class="tong-left tong-search" src="https://www.v2ex.com/static/img/qbar_light@2x.png">
+        <a class="tong-right tong-href" href="{{url_for('user.login_index')}}">登录</a>
+        <a class="tong-right tong-href" href="{{url_for('user.register_index')}}">注册</a>
+        <a class="tong-right tong-href" href="/topic">首页</a>
+    </div>
+    {% endblock %}
+    <div class="tong-main">
+        <div class="tong-sidebar tong-box tong-right">
+        {% block sidebar %}
+            <div class="tong-bbs-title">
+                <div class="tong-title-english">V2EX = way to explore</div>
+                <div class="tong-title-chinese">V2EX 是一个关于分享和探索的地方</div>
+            </div>
+            <div class="tong-register-login">
+                <a href="{{url_for('user.register_index')}}"><button class="tong-register-button">现在注册</button></a>
+                <div class="tong-login-button">
+                    <span class="tong-valid-login">已注册用户请</span>
+                    <a href="{{url_for('user.login_index')}}"><span class="tong-login-href">登录</span></a>
+                </div>
+            </div>
+        {% endblock %}
+        </div>
+        <div class="tong-content">
+        {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div class="tong-bottom">
+        底栏
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "basebbs.html" %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/bbs_user_register.css">
+{% endblock %}
+{% block content %}
+    <div class="tong-box">
+        <div class="tong-padding-10 tong-register">
+            <a class="tong-href-v2ex" href="/topic">V2EX</a>
+            <span class="tong-v2ex-name"> > 登录</span>
+        </div>
+        <div class="tong-messages">{{msgs}}</div>
+        <div class="tong-table">
+            <form action="{{ url_for('.login') }}" method="post">
+                <table>
+                    <tr>
+                        <td class="" align="right">用户名</td>
+                        <td>
+                            <input class="tong-input" type="text" name="username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">密码</td>
+                        <td>
+                            <input class="tong-input" type="text" name="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button class="tong-button-first">登录</button></td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
+{% block sidebar %}
+    {{ super() }}
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "basebbs.html" %}
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/bbs_index.css">
+<link rel="stylesheet" href="/static/css/bbs_topic.css">
+{% endblock %}
+{% block content %}
+    <div class="tong-inner-content tong-box">
+        <div class="tong-topic tong-padding-10">
+            <img class="tong-avatar tong-padding-0 tong-right" src="{{ topic.user_t.avatar }}">
+            <div class="tong-topic-top">
+                <a class="tong-href-v2ex" href="/topic">V2EX</a><span> > </span>
+                <a class="tong-v2ex-name" href="{{ url_for('node.show', id=topic.node.id)}}">
+                    {{topic.node.name}}
+                </a>
+            </div>
+            <div class="tong-topic-title">
+                {{ topic.title }}
+            </div>
+            <div class="tong-topic-signature">
+                {{ topic.user_t.username }}
+            </div>
+        </div>
+        <div class="tong-padding-10">
+            <p>
+                {{ topic.content }}
+            </p>
+        </div>
+    </div>
+    <div class="tong-box tong-inner-content">
+        {% for c in topic.comments %}
+        <div class="tong-comment">
+            <img class="tong-avatar tong-left tong-box" src="{{c.user_c.avatar}}">
+            <div class="tong-comment-tilte">
+                <div class="tong-comment-username">
+                    {{ c.user_c.username }}
+                </div>
+                <div class="tong-comment-content">
+                    {{ c.content}}
+                </div>
+                <div>
+                    {{ c.created_time }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="tong-padding-10 tong-inner-content tong-box">
+        <form action="{{ url_for('comment.add')}}" method="post">
+            <input type="hidden" name="topic_id" value="{{ topic.id }}">
+            <input type="hidden" name="user_id" value="{{user.id}}">
+            <br>
+            <textarea name="content"></textarea>
+            <br>
+            <button>提交评论</button>
+        </form>
+    </div>
+{% endblock %}
+
+
